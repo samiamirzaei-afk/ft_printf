@@ -1,0 +1,3 @@
+make printf
+
+lean about "variadic functions in C"
