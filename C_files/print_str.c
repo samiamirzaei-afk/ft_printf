@@ -111,6 +111,11 @@ int	print_str(const char *str, ...)
 				ft_putstr(va_arg(ap, char *));
 			str += 2;
 		}
+		if(*str == '%' && *(str + 1) == '%')
+		{
+				ft_putchar('%');
+			str += 2;
+		}
 		while(*str != '%' && *str)
 		{
 			ft_putchar(*str);
