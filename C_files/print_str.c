@@ -2,33 +2,30 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include "ft_putnbr_base.c"
 
 
-static int	ft_max_min_check(int nb)
+static int	ft_max_min_check(int nb, int *count)
 {
+	*count = 0;
 	if (nb == 2147483647)
-	{
-		write(1, "2147483647", 10);
-		return (1);
-	}
+		return (write(1, "2147483647", 10));
 	if (nb == -2147483648)
-	{
-		write(1, "-2147483648", 11);
-		return (1);
-	}
-	return (0);
+		return (write(1, "-2147483648", 11));
+	return (-1);
 }
 
-void	ft_putnbr(int nb)
+int	ft_putnbr(int nb)
 {
-	int		i;
+	int	i;
+	int 	count;
 	char	itoa[12];
 
-	if (ft_max_min_check(nb) == 1)
-		return ;
+	if ((count = ft_max_min_check(nb, &count)) != -1)
+		return (count);
 	if (nb < 0)
 	{
-		write(1, "-", 1);
+		count += write(1, "-", 1);
 		nb *= -1;
 	}
 	itoa[0] = '\0';
@@ -40,11 +37,9 @@ void	ft_putnbr(int nb)
 		i++;
 	}
 	itoa[i] = nb + '0';
-	while (itoa[i] != '\0')
-	{
-		write(1, &itoa[i], 1);
-		i--;
-	}
+	while (itoa[i--] != '\0')
+		count += write(1, &itoa[i], 1);
+	return (count);
 }
 
 int	ft_putstr(char *s)
@@ -68,62 +63,49 @@ int	ft_putchar(char car)
 		return (write(1, &car, 1));
 }
 
-int	print_nbr(int n, ...)
-{
-	int i;
-	va_list ap;
-	int result;
-	
-	i = 0;
-	result = 0;
-	va_start(ap, n);
-	while (i < n)
-	{
-		result = (int)va_arg(ap, int);
-		printf("%d\n", result);
-		i++;
-
-	}
-	return(1);
-}
-
 
 int	print_str(const char *str, ...)
 {
 	va_list ap;
 	void *result;
+	int count;
 	
 	va_start(ap, str);
 	while (*str)
 	{	
 		if(*str == '%' && *(str + 1) == 'c')
 		{
-				ft_putchar((char)va_arg(ap, int));
+			count += ft_putchar((char)va_arg(ap, int));
 			str += 2;
 		}
 		if(*str == '%' && *(str + 1) == 'd')
 		{
-				ft_putnbr(va_arg(ap, int));
+			count += ft_putnbr(va_arg(ap, int));
 			str += 2;
 		}
 		if(*str == '%' && *(str + 1) == 's')
 		{
-				ft_putstr(va_arg(ap, char *));
+			count += ft_putstr(va_arg(ap, char *));
 			str += 2;
 		}
 		if(*str == '%' && *(str + 1) == '%')
 		{
-				ft_putchar('%');
+			count += ft_putchar('%');
+			str += 2;
+		}
+		if(*str == '%' && *(str + 1) == 'p')
+		{
+			ft_putnbr_base(va_arg(ap, int), "0123456789abcdef");
 			str += 2;
 		}
 		while(*str != '%' && *str)
 		{
-			ft_putchar(*str);
+			count += ft_putchar(*str);
 			str++;
 		}
 
 	}
-	return(1);
+	return(count);
 }
 
 
@@ -136,8 +118,12 @@ int	main(int argc, char **argv)
 	}
 	int error;
 //	error = print_nbr(2, 12345, 6789);
-	error = print_str("this is a good %s%sgsg%c%c string my bro ","000", "000", 'x', 'x', 'x');
-//	error = printf("this is a good string my bro %s", "also good string");
+	error = print_str("this is a good %s %s gsg %c %p string my bro ","000", "000", 'x', &error);
+	error = printf("\n ft_count:%d\n", error);
+	error = printf("this is a good %s %s gsg %c %p string my bro \n","000", "000", 'x', &error);
+	error = printf("this is a good %s %s gsg %c %p string my bro \n","000", "000", 'x', &error);
+	error = printf("this is a good %s %s gsg %c %p string my bro \n","000", "000", 'x', &error);
+	error = printf("og_count:%d\n", error);
 	return (error);
 
 }
