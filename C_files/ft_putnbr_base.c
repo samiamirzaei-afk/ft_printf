@@ -51,7 +51,7 @@ void	ft_show(int *result, int *result_i, char *base)
 	}
 }
 
-void	ft_convert(int nbr, int len, char *base)
+void	ft_convert(unsigned long nbr, int len, char *base)
 {
 	int		temp[20];
 	int		i;
@@ -75,10 +75,14 @@ void	ft_convert(int nbr, int len, char *base)
 	ft_show(temp, &i, base);
 }
 
-void	ft_putnbr_base(int nbr, char *base)
+void	ft_putnbr_base(void *ptr, char *base)
 {
 	int	i;
+	unsigned long nbr;
 
+	nbr = (unsigned long)ptr;
+
+	write(1, "0x", 2);
 	i = 0;
 	while (base[i])
 		i++;

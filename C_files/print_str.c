@@ -3,7 +3,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "ft_putnbr_base.c"
-
+#include "ft_convert_base2.c"
+#include "ft_convert_base.c"
+#include "convert.h"
 
 static int	ft_max_min_check(int nb, int *count)
 {
@@ -95,7 +97,7 @@ int	print_str(const char *str, ...)
 		}
 		if(*str == '%' && *(str + 1) == 'p')
 		{
-			ft_putnbr_base(va_arg(ap, int), "0123456789abcdef");
+			ft_putnbr_base(va_arg(ap, void *), "0123456789abcdef");
 			str += 2;
 		}
 		while(*str != '%' && *str)
@@ -117,14 +119,10 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	int error;
-//	error = print_nbr(2, 12345, 6789);
-	error = print_str("this is a good %s %s gsg %c %p string my bro ","000", "000", 'x', &error);
+	error = print_str("this is a good %s %c %p string my bro ", "000", 'x', &error);
 	error = printf("\n ft_count:%d\n", error);
-	error = printf("this is a good %s %s gsg %c %p string my bro \n","000", "000", 'x', &error);
-	error = printf("this is a good %s %s gsg %c %p string my bro \n","000", "000", 'x', &error);
-	error = printf("this is a good %s %s gsg %c %p string my bro \n","000", "000", 'x', &error);
+	error = printf("this is a good %s %c %p string my bro \n", "000", 'x', &error);
 	error = printf("og_count:%d\n", error);
 	return (error);
-
 }
 
