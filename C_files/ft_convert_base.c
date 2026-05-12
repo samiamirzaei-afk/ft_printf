@@ -30,7 +30,7 @@ int	ft_atoi(char *string)
 	{
 		if(string[i] == '-')
 			negative_count++;
-			i++;	
+		i++;	
 	}
 	if(negative_count % 2 == 1)
 		negative = 1;

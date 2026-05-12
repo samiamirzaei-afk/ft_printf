@@ -51,7 +51,6 @@ int	ft_power(int base, int power)
 int	ft_dec_conversion(int number, size_t number_length, char *base)
 {
 	int i;
-	int j;
 	int k;
 	int *array_number;
 	int temp;
@@ -60,7 +59,6 @@ int	ft_dec_conversion(int number, size_t number_length, char *base)
 
 	i = 1;
 	k = 1;
-	j = 0;
 	number_dec = 0;
 	negative = 0;
 	if(number < 0)
@@ -108,7 +106,7 @@ int	ft_dec_conversion(int number, size_t number_length, char *base)
 }
 
 
-char	*ft_array_to_int(int *array, int array_size, char *base, int base_length)
+char	*ft_array_to_int(int *array, int array_size, char *base)
 {
 	int i;
 	char *final_string;
@@ -166,7 +164,7 @@ printf("div satrt:'%d'\n", div);
 		i--;
 	}
 	
-	final = ft_array_to_int(mod_store, mod_store_length, base, base_length);
+	final = ft_array_to_int(mod_store, mod_store_length, base);
 	free(mod_store);
 	return(final);
 

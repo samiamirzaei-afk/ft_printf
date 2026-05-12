@@ -9,35 +9,9 @@
 /*   Updated: 2026/02/13 11:40:12 by ammirzae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*
-#include <stdio.h>
-#include <stdlib.h>
-*/
-#include <unistd.h>
 
-int	ft_error_check(char *base)
-{
-	int	i;
-	int	j;
 
-	i = 0;
-	j = 0;
-	while (base[i])
-	{
-		j = i;
-		while (base[i] != base[j + 1] && base[i] != '+' && base[i] != '-'
-			&& base[j] != '\0')
-		{
-			j++;
-		}
-		if (base[i] == base[j + 1] || base[i] == '+' || base[i] == '-')
-			return (-1);
-		i++;
-	}
-	return (1);
-}
-
-/*	* * * * HELPER FUNCTION * * * *		*/
+#include "convert.h"
 
 void	ft_show(int *result, int *result_i, char *base)
 {
@@ -51,75 +25,36 @@ void	ft_show(int *result, int *result_i, char *base)
 	}
 }
 
-void	ft_convert(unsigned long nbr, int len, char *base)
+int	ft_convert(unsigned long nbr, int len, char *base)
 {
-	int		temp[20];
+	int		temp[21];
 	int		i;
-	long	nbrl;
 
-	nbrl = nbr;
 	i = 1;
 	temp[0] = -1;
-	if (nbrl < 0)
+	while (nbr >= (unsigned long)len)
 	{
-		nbrl = nbrl * -1;
-		write(1, "-", 1);
-	}
-	while (nbrl >= len)
-	{
-		temp[i] = nbrl % len;
-		nbrl /= len;
+		temp[i] = nbr % len;
+		nbr /= len;
 		i++;
 	}
-	temp[i] = nbrl;
+	temp[i] = nbr;
 	ft_show(temp, &i, base);
+	return(i);
 }
 
-void	ft_putnbr_base(void *ptr, char *base)
+int	ft_putnbr_base(void *ptr, char *base)
 {
 	int	i;
 	unsigned long nbr;
+	int count;
 
 	nbr = (unsigned long)ptr;
-
-	write(1, "0x", 2);
+	count = 0;
+	if((count = write(1, "0x", 2)) == -1)
+		return(-1);
 	i = 0;
 	while (base[i])
 		i++;
-	if (ft_error_check(base) == -1 || i <= 1)
-		return ;
-	ft_convert(nbr, i, base);
+	return(ft_convert(nbr, i, base));
 }
-/*
-int	main(void)
-{
-	int	i;
-	int	k;
-	
-	k = 2147483600;
-	for(i = -2147483600; i != k; i--)
-	{  
-		ft_putnbr_base(i, "0123456789abcdef");
-		write(1, "\n", 1);
-	}
-//	ft_putnbr_base(atoi(argv[1]), argv[2]);
-}
-*/
-
-
-/*
-int	main(int argc, char **argv)
-{
-	int	i;
-
-	if (argc < 2)
-	{
-		printf("please provide an argument");
-		return (1);
-	}
-	i = -2147483648;
-	ft_putnbr_base(i, "0123456789abcdef");
-	printf("\n");
-	ft_putnbr_base(atoi(argv[1]), argv[2]);
-}
-*/
