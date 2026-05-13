@@ -10,7 +10,8 @@ int	print_str(const char *str, ...)
 	va_list ap;
 //	void *result;
 	int count;
-	
+
+	count = 0;	
 	va_start(ap, str);
 	while (*str)
 	{	
@@ -36,17 +37,17 @@ int	print_str(const char *str, ...)
 		}
 		if(*str == '%' && *(str + 1) == 'p')
 		{
-			ft_putnbr_base(va_arg(ap, void *), "0123456789abcdef");
+			count +=ft_putnbr_base(va_arg(ap, void *), "0123456789abcdef");
 			str += 2;
 		}
 		if(*str == '%' && *(str + 1) == 'x')
 		{
-			ft_putnbr_base(va_arg(ap, void *), "0123456789abcdef");
+			count +=ft_putnbr_base(va_arg(ap, void *), "0123456789abcdef");
 			str += 2;
 		}
 		if(*str == '%' && *(str + 1) == 'X')
 		{
-			ft_putnbr_base(va_arg(ap, void *), "0123456789ABCDEF");
+			count += ft_putnbr_base(va_arg(ap, void *), "0123456789ABCDEF");
 			str += 2;
 		}
 		while(*str != '%' && *str)

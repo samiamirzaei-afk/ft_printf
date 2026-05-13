@@ -1,11 +1,11 @@
 NAME = a.out
 
-SRC = ft_nbr.c\
+SRC = ft_nbr_strlen.c\
       ft_chr_str.c\
-      ft_convert_base2.c\
-      ft_convert_base.c\
       ft_putnbr_base.c\
       print_str.c
+#      ft_convert_base2.c\
+      ft_convert_base.c\
 
 OBJ = $(SRC:.c=.o)
 

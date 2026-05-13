@@ -13,19 +13,24 @@
 
 #include "convert.h"
 
-void	ft_show(int *result, int *result_i, char *base)
+int	ft_show(int *result, int *result_i, char *base, int count)
 {
 	char	temp;
+	int write_check;
 
+	write_check = 0;
 	while (result[*result_i] != -1)
 	{
 		temp = base[result[*result_i]];
-		write(1, &temp, 1);
+		if((write_check = write(1, &temp, 1)) == -1)
+			return (-1);
+		count += write_check;
 		*result_i = *result_i - 1;
 	}
+	return (count);
 }
 
-int	ft_convert(unsigned long nbr, int len, char *base)
+int	ft_convert(unsigned long nbr, int len, char *base, int count)
 {
 	int		temp[21];
 	int		i;
@@ -39,8 +44,8 @@ int	ft_convert(unsigned long nbr, int len, char *base)
 		i++;
 	}
 	temp[i] = nbr;
-	ft_show(temp, &i, base);
-	return(i);
+	count = ft_show(temp, &i, base, count);
+	return(count);
 }
 
 int	ft_putnbr_base(void *ptr, char *base)
@@ -56,5 +61,5 @@ int	ft_putnbr_base(void *ptr, char *base)
 	i = 0;
 	while (base[i])
 		i++;
-	return(ft_convert(nbr, i, base));
+	return(ft_convert(nbr, i, base, count));
 }
