@@ -19,8 +19,13 @@ int	ft_putnbr_ptr(void *ptr, char *base)
 	unsigned long nbr;
 	int count;
 
-	nbr = (unsigned long)ptr;
 	count = 0;
+	if(ptr == NULL)
+	{
+		count = write(1, "(nil)", 5);
+		return(count);	
+	}
+	nbr = (unsigned long)ptr;
 	if((count = write(1, "0x", 2)) == -1)
 		return(-1);
 	i = 0;

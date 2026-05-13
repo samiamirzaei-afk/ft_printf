@@ -1,20 +1,23 @@
+#include "convert.h"
+
 int    main(void)
 {
-    char    *name = "Dmytro";
+    char    name[] = "Dmytro";
     int        count = 0;
     int     rcount = 0;
     int        m;
     int        o;
-
-    o = ft_printf(NULL);
+	
+    o = 1;
+    m = 1;
     ft_printf("my   ft: %d\n", o);
-    m = printf(NULL);
     printf("real ft: %d\n", m);
 
     ft_printf("\n");
 
-    count = ft_printf(" NULL %s NULL \n", (char *)NULL);
-    rcount = printf(" NULL %s NULL \n", (char *)NULL);
+    char *null = NULL;
+    count = ft_printf(" NULL %s NULL \n", null);
+    rcount = printf(" NULL %s NULL \n", null);
     ft_printf("my   ft: %d\n", count);
     printf("real ft: %d\n\n", rcount);
 
@@ -57,6 +60,8 @@ int    main(void)
     ft_printf("my   ft: %d\n", count);
     printf("real ft: %d\n\n", rcount);
 
+
+/*  	 * 	*	*	*/
     count = ft_printf("[%u]\n", 2486);
     rcount = printf("[%u]\n", 2486);
     ft_printf("my   ft: %d\n", count);

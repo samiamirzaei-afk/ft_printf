@@ -17,7 +17,7 @@
 #include "convert.h"
 
 
-int	print_str(const char *str, ...)
+int	ft_printf(const char *str, ...)
 {
 	va_list ap;
 	int count;
@@ -67,25 +67,33 @@ int	print_str(const char *str, ...)
 			str++;
 		}
 	}
-	va_end(ap)
+	va_end(ap);
 	return(count);
 }
 
-
+/*
 int	main()
 {
 	int error;
 	int hex;
+	char *null = NULL;
 
-	hex = 42424242;	
-//	error = print_str("this IS a good %X %x %p string my bro ", 1000, 123456789, &error);
-//	error = printf("\n ft_count:%d\n", error);
-//	error = printf("this IS a good %X %x %p string my bro \n", 1000, 123456789, &error);
-//	error = printf("og_count:%d\n", error);
-	error = print_str("this IS a good '%X' string my bro \n", hex);
+	hex = 42424242;
+	hex += 1;
+	
+	error = print_str("this IS a good %X %x %p string my bro ", 1000, 123456789, &error);
+	error = printf("\n ft_count:%d\n", error);
+	error = printf("this IS a good %X %x %p string my bro \n", 1000, 123456789, &error);
+	error = printf("og_count:%d\n\n", error);
+	error = print_str("this IS a good %s string my bro \n", null);
 	error = printf("ft_count:%d\n", error);
-	   error = printf("this IS a good '%X' string my bro \n", hex);
+	   error = printf("this IS a good %s string my bro \n", null);
+	error = printf("og_count:%d\n", error);
+
+	error = print_str("this IS a good %s string my bro \n", null);
+	error = printf("ft_count:%d\n", error);
+	   error = printf("this IS a good %s string my bro \n", null);
 	error = printf("og_count:%d\n", error);
 	return (error);
 }
-
+*/
