@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_str.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ammirzae <ammirzae@student.42vienna.c      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/05/13 12:54:08 by ammirzae          #+#    #+#             */
+/*   Updated: 2026/05/13 12:57:33 by ammirzae         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 #include <stdarg.h>
 #include <stdlib.h>
@@ -8,7 +20,6 @@
 int	print_str(const char *str, ...)
 {
 	va_list ap;
-//	void *result;
 	int count;
 
 	count = 0;	
@@ -37,7 +48,7 @@ int	print_str(const char *str, ...)
 		}
 		if(*str == '%' && *(str + 1) == 'p')
 		{
-			count +=ft_putnbr_base(va_arg(ap, void *), "0123456789abcdef");
+			count +=ft_putnbr_ptr(va_arg(ap, void *), "0123456789abcdef");
 			str += 2;
 		}
 		if(*str == '%' && *(str + 1) == 'x')
@@ -55,8 +66,8 @@ int	print_str(const char *str, ...)
 			count += ft_putchar(*str);
 			str++;
 		}
-
 	}
+	va_end(ap)
 	return(count);
 }
 
@@ -64,9 +75,16 @@ int	print_str(const char *str, ...)
 int	main()
 {
 	int error;
-	error = print_str("this IS a good %X %c %p string my bro ", 1000, 'x', &error);
-	error = printf("\n ft_count:%d\n", error);
-	error = printf("this IS a good %X %c %p string my bro \n", 1000, 'x', &error);
+	int hex;
+
+	hex = 42424242;	
+//	error = print_str("this IS a good %X %x %p string my bro ", 1000, 123456789, &error);
+//	error = printf("\n ft_count:%d\n", error);
+//	error = printf("this IS a good %X %x %p string my bro \n", 1000, 123456789, &error);
+//	error = printf("og_count:%d\n", error);
+	error = print_str("this IS a good '%X' string my bro \n", hex);
+	error = printf("ft_count:%d\n", error);
+	   error = printf("this IS a good '%X' string my bro \n", hex);
 	error = printf("og_count:%d\n", error);
 	return (error);
 }
