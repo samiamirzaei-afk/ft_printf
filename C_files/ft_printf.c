@@ -17,6 +17,103 @@
 #include "convert.h"
 
 
+void	format_finder2(const char **str, va_list ap, int *count)
+{
+	
+	if(**str == '%' && (*str)[1] == 'u')
+	{
+		*count += ft_unsigned_putnbr(va_arg(ap, unsigned int));
+		*str += 2;
+	}
+	if(**str == '%' && (*str)[1] == 'c')
+	{
+		*count += ft_putchar((char)va_arg(ap, int));
+		*str += 2;
+	}
+	if(**str == '%' && (*str)[1] == 's')
+	{
+		*count += ft_putstr(va_arg(ap, char *));
+		*str += 2;
+	}
+	if(**str == '%' && (*str)[1] == '%')
+	{
+		*count += ft_putchar('%');
+		*str += 2;
+	}
+}
+
+
+void	format_finder(const char **str, va_list ap, int *count)
+{
+
+	if(**str == '%' && ((*str)[1] == 'd' || (*str)[1] == 'i'))
+	{
+		*count += ft_putnbr(va_arg(ap, int));
+		*str += 2;
+	}
+	if(**str == '%' && (*str)[1] == 'p')
+	{
+		*count += ft_putnbr_ptr(va_arg(ap, void *), "0123456789abcdef");
+		*str += 2;
+	}
+	if(**str == '%' && (*str)[1] == 'x')
+	{
+		*count += ft_putnbr_base(va_arg(ap, void *), "0123456789abcdef");
+		*str += 2;
+	}
+	if(**str == '%' && (*str)[1] == 'X')
+	{
+		*count += ft_putnbr_base(va_arg(ap, void *), "0123456789ABCDEF");
+		*str += 2;
+	}
+	format_finder2(str, ap, count);
+}
+
+int	ft_printf(const char *str, ...)
+{
+	va_list ap;
+	int count;
+	
+	count = 0;	
+	va_start(ap, str);
+	while (*str)
+	{	
+		if(*str == '%')
+		{	
+			format_finder(&str, ap, &count);
+		}
+		while(*str != '%' && *str)
+		{
+			count += ft_putchar(*str);
+			str++;
+		}
+	}
+	va_end(ap);
+	return(count);
+}
+
+/*
+int	ft_printf(const char *str, ...)
+{
+	va_list ap;
+	int count;
+
+	count = 0;	
+	va_start(ap, str);
+	while (*str)
+	{	
+		while(*str != '%' && *str)
+		{
+			count += ft_putchar(*str);
+			str++;
+		}
+	}
+	va_end(ap);
+	return(count);
+}
+*/
+
+/*
 int	ft_printf(const char *str, ...)
 {
 	va_list ap;
@@ -28,7 +125,7 @@ int	ft_printf(const char *str, ...)
 	{	
 		if(*str == '%' && *(str + 1) == 'u')
 		{
-			count += ft_putnbr(va_arg(ap, unsigned int));
+			count += ft_unsigned_putnbr(va_arg(ap, unsigned int));
 			str += 2;
 		}
 		if(*str == '%' && *(str + 1) == 'c')
@@ -75,7 +172,7 @@ int	ft_printf(const char *str, ...)
 	va_end(ap);
 	return(count);
 }
-
+*/
 /*
 int	main()
 {

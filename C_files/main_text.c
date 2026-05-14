@@ -30,7 +30,7 @@ int    main(void)
     	ft_printf("my   ft: %d\n", count);
     	printf("real ft: %d\n\n", rcount);
     }
-	return (0);
+//	return (0);
     rcount = printf("NULL");
     count = ft_printf("NULL");
     ft_printf("my   ft: %d\n", count);

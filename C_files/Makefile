@@ -25,4 +25,7 @@ clean:
 
 bug: $(SRC)
 	cc $(CFLAGS) $^ -o $(NAME) -g
-.PHONY: bug clean
+
+reel: $(OBJ)
+	ar rsc printf.a $?
+.PHONY: bug clean reel
