@@ -21,10 +21,21 @@ int    main(void)
     ft_printf("my   ft: %d\n", count);
     printf("real ft: %d\n\n", rcount);
 
-//    count = ft_printf("my   ft: [%y]\n");
-//    rcount = printf("real ft: [%y]\n");
-//    ft_printf("my   ft: %d\n", count);
-//    printf("real ft: %d\n\n", rcount);
+    unsigned int num;
+
+    for(num = 0; num != 4294967200; num--)
+    {
+	    count = ft_printf("[%u]\n", num);
+    	rcount = printf("[%u]\n", num);
+    	ft_printf("my   ft: %d\n", count);
+    	printf("real ft: %d\n\n", rcount);
+    }
+	return (0);
+    rcount = printf("NULL");
+    count = ft_printf("NULL");
+    ft_printf("my   ft: %d\n", count);
+    printf("real ft: %d\n\n", rcount);
+
 
     count = ft_printf("Hi, my name is [%s].\n", name);
     rcount = printf("Hi, my name is [%s].\n", name);
@@ -62,6 +73,7 @@ int    main(void)
 
 
 /*  	 * 	*	*	*/
+
     count = ft_printf("[%u]\n", 2486);
     rcount = printf("[%u]\n", 2486);
     ft_printf("my   ft: %d\n", count);
@@ -82,7 +94,7 @@ int    main(void)
     ft_printf("my   ft: %d\n", count);
     printf("real ft: %d\n\n", rcount);
 
-    count = ft_printf("My test: [%+]\n");
+    count = ft_printf("My test: [%%+]\n");
     ft_printf("my   ft: %d\n\n", count);
 
     return (0);

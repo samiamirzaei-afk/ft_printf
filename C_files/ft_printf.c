@@ -26,6 +26,11 @@ int	ft_printf(const char *str, ...)
 	va_start(ap, str);
 	while (*str)
 	{	
+		if(*str == '%' && *(str + 1) == 'u')
+		{
+			count += ft_putnbr(va_arg(ap, unsigned int));
+			str += 2;
+		}
 		if(*str == '%' && *(str + 1) == 'c')
 		{
 			count += ft_putchar((char)va_arg(ap, int));

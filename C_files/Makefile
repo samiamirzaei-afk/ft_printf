@@ -1,6 +1,7 @@
 NAME = a.out
 
 SRC = ft_nbr_strlen.c\
+      ft_unsigned_putnbr.c\
       ft_chr_str.c\
       ft_putnbr_base.c\
       ft_putnbr_ptr.c\

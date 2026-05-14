@@ -10,7 +10,7 @@ int     ft_putstr(char *s)
         if (s == NULL)
                 return (write(1, "(null)", 6));
         len = ft_strlen(s);
-        len = write(1, &s, len);
+        len = write(1, &s[0], len);
         return (len);
 }
 
