@@ -18,23 +18,24 @@ int    main(void)
 	printf("og: %d\n", m);
 	printf("ft: %d\n", o);
     ft_printf("\n");
-
+/*
     char *null = NULL;
     count = ft_printf(" NULL %s NULL \n", null);
     rcount = printf(" NULL %s NULL \n", null);
     ft_printf("my   ft: %d\n", count);
     printf("real ft: %d\n\n", rcount);
+*/
+    unsigned int num;
 
-//    unsigned int num;
-
- /*   for(num = 0; num != 4294967200; num--)
+    for(num = 0; num != 120; num++)
     {
-	    count = ft_printf("[%u]\n", num);
-    	rcount = printf("[%u]\n", num);
+	    count = ft_printf("[%i]\n", num);
+    	rcount = printf("[%i]\n", num);
     	ft_printf("my   ft: %d\n", count);
     	printf("real ft: %d\n\n", rcount);
     }
-*/
+
+	return(0);
     rcount = printf("NULL");
     count = ft_printf("NULL");
     ft_printf("my   ft: %d\n", count);

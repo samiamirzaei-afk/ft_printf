@@ -35,7 +35,7 @@ int	ft_putnbr(int nb)
 	int	result;
 
 	count = 0;
-	if ((count = ft_max_min_neg_check(&nb, &count)) != 1)
+	if ((ft_max_min_neg_check(&nb, &count)) != 1)
 		return (count);
 	itoa[0] = '\0';
 	i = 1;
