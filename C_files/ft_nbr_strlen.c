@@ -15,9 +15,9 @@ size_t	ft_strlen(const char *str)
 static int	ft_max_min_neg_check(int *nb, int *count)
 {
 	if (*nb == 2147483647)
-		return (write(1, "2147483647", 10));
+		return ((*count = write(1, "2147483647", 10)));
 	if (*nb == -2147483648)
-		return (write(1, "-2147483648", 11));
+		return ((*count = write(1, "-2147483648", 11)));
 	if (*nb < 0)
 	{
 		if((*count = write(1, "-", 1)) == -1)

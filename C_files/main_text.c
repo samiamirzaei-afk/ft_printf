@@ -1,4 +1,5 @@
 #include "ft_printf.h"
+#include <limits.h>
 
 int    main(void)
 {
@@ -17,17 +18,28 @@ int    main(void)
 	o = ft_printf(NULL);
 	printf("og: %d\n", m);
 	printf("ft: %d\n", o);
-    ft_printf("\n");
-/*
+    ft_printf("\n\n");
+    
+m = ft_printf("ft: %x ", LONG_MAX);
+o = printf("OG: %lx ", LONG_MAX);
+	printf("og: %d\n", m);
+	printf("ft: %d\n", o);
+    ft_printf("\n\n");
+m = ft_printf("ft: %x ", LONG_MIN);
+o = printf("OG: %lx ", LONG_MIN);
+	printf("og: %d\n", m);
+	printf("ft: %d\n", o);
+	return(0);
+
     char *null = NULL;
     count = ft_printf(" NULL %s NULL \n", null);
     rcount = printf(" NULL %s NULL \n", null);
     ft_printf("my   ft: %d\n", count);
     printf("real ft: %d\n\n", rcount);
-*/
+
     unsigned int num;
 
-    for(num = 0; num != 120; num++)
+    for(num = 0; num != 10; num++)
     {
 	    count = ft_printf("[%i]\n", num);
     	rcount = printf("[%i]\n", num);
@@ -35,7 +47,6 @@ int    main(void)
     	printf("real ft: %d\n\n", rcount);
     }
 
-	return(0);
     rcount = printf("NULL");
     count = ft_printf("NULL");
     ft_printf("my   ft: %d\n", count);

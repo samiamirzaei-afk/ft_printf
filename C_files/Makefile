@@ -25,7 +25,7 @@ fclean: clean
 re: fclean all
 
 bug: $(SRC)
-	cc $(CFLAGS) main_text.c $^  -g
+	cc  main_text.c $^  -g
 
 
 .PHONY: bug clean fclean re
