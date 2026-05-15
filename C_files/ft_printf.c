@@ -70,6 +70,8 @@ int	ft_printf(const char *str, ...)
 	va_list ap;
 	int count;
 	
+	if(str == NULL)
+		return (-1);
 	count = 0;	
 	va_start(ap, str);
 	while (*str)

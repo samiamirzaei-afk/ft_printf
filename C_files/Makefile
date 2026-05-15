@@ -25,8 +25,7 @@ fclean: clean
 re: fclean all
 
 bug: $(SRC)
-	cc $(CFLAGS)   $^  -g
+	cc $(CFLAGS) main_text.c $^  -g
 
-reel: $(OBJ)
-	ar rsc printf.a $?
-.PHONY: bug clean reel
+
+.PHONY: bug clean fclean re
