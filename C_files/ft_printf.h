@@ -1,10 +1,9 @@
-#ifndef CONVERT_H
-#define CONVERT_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-#include <stddef.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
+# include <stdio.h>
+# include <stdarg.h>
+# include <unistd.h>
 
 /*	ft_nbr_strlen*/
 int	ft_putnbr(int nb);

@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#include "convert.h"
+#include "ft_printf.h"
 
 int	ft_show(int *result, int *result_i, char *base, int count)
 {

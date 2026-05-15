@@ -10,11 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdarg.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include "convert.h"
+#include "ft_printf.h"
 
 
 void	format_finder2(const char **str, va_list ap, int *count)

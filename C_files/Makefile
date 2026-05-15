@@ -1,30 +1,31 @@
-NAME = a.out
-
 SRC = ft_nbr_strlen.c\
       ft_unsigned_putnbr.c\
       ft_chr_str.c\
       ft_putnbr_base.c\
       ft_putnbr_ptr.c\
-      ft_printf.c\
-      main_text.c
-#      ft_convert_base2.c\
-#     ft_convert_base.c\
+      ft_printf.c
 
 OBJ = $(SRC:.c=.o)
+NAME = libftprintf.a
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
+AR = ar
+ARFLAGS = rcs
 
 all: $(NAME)
-
-CFLAGS = -Wall -Wextra
-
 $(NAME): $(OBJ)
-	cc $(CFLAGS) $^ -o $(NAME)
-	
+	$(AR) $(ARFLAGS) $(NAME) $?
 	
 clean:
 	rm -f $(OBJ)
 
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
+
 bug: $(SRC)
-	cc $(CFLAGS) $^ -o $(NAME) -g
+	cc $(CFLAGS)   $^  -g
 
 reel: $(OBJ)
 	ar rsc printf.a $?
