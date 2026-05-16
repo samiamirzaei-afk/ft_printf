@@ -1,30 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_unsigned_putnbr.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ammirzae <ammirzae@student.42vienna.c      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/05/16 16:09:34 by ammirzae          #+#    #+#             */
+/*   Updated: 2026/05/16 16:09:44 by ammirzae         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
-/*
-static int	ft_max_min_neg_check(int *nb, int *count)
-{
-	if (*nb == 2147483647)
-		return (write(1, "2147483647", 10));
-	if (*nb == -2147483648)
-		return (write(1, "-2147483648", 11));
-	if (*nb < 0)
-	{
-		if((*count = write(1, "-", 1)) == -1)
-				return(-1);
-		*nb *= -1;
-	}
-	return (1);
-}
-*/
+
 int	ft_unsigned_putnbr(unsigned int nb)
 {
-	int	i;
-	int 	count;
+	int		i;
+	int		count;
 	char	itoa[12];
-	int	result;
+	int		result;
 
 	count = 0;
-//	if ((count = ft_max_min_neg_check(&nb, &count)) != 1)
-//		return (count);
 	itoa[0] = '\0';
 	i = 1;
 	while (nb > 9)
@@ -36,18 +31,19 @@ int	ft_unsigned_putnbr(unsigned int nb)
 	itoa[i] = nb + '0';
 	while (itoa[i] != '\0')
 	{
-		if((result = write(1, &itoa[i--], 1)) == -1)
-			return(-1);
+		result = write(1, &itoa[i--], 1);
+		if (result == -1)
+			return (-1);
 		count += result;
 	}
 	return (count);
 }
 /*
-int	main()
+int	main(void)
 {
-	int num = 12345;
+	int	num;
 
+	num = 12345;
 	ft_putnbr(num);
-
 }
 */
