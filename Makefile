@@ -29,4 +29,4 @@ bug: $(addprefix $(SRC_DIR), $(SRC))
 
 cbug: 
 	$(RM) a.out
-.PHONY: bug clean fclean re
+.PHONY: bug cbug clean fclean re
