@@ -5,22 +5,23 @@ SRC = ft_nbr_strlen.c\
       ft_putnbr_ptr.c\
       ft_printf.c
 
-OBJ = $(SRC:.c=.o)
+SRC_DIR = src/
+
+OBJ = $(addprefix $(SRC_DIR),$(SRC:.c=.o))
 NAME = libftprintf.a
-CC = cc
 CFLAGS = -Wall -Wextra -Werror
-AR = ar
 ARFLAGS = rcs
 
 all: $(NAME)
 $(NAME): $(OBJ)
 	$(AR) $(ARFLAGS) $(NAME) $?
-	
+
+
 clean:
-	rm -f $(OBJ)
+	$(RM) $(OBJ)
 
 fclean: clean
-	rm -f $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
 
