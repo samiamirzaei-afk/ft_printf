@@ -13,20 +13,20 @@ int    main(void)
     m = 1;
     ft_printf("my   ft: %d\n", o);
     printf("real ft: %d\n", m);
-  /*  
+
 	m = printf(NULL);
 	o = ft_printf(NULL);
 	printf("og: %d\n", m);
 	printf("ft: %d\n", o);
     ft_printf("\n\n");
     
-m = ft_printf("ft: %x ", LONG_MAX);
-o = printf("OG: %lx ", LONG_MAX);
+m = ft_printf("ft: %x ", UINT_MAX);
+o = printf("OG: %x ", UINT_MAX);
 	printf("og: %d\n", m);
 	printf("ft: %d\n", o);
     ft_printf("\n\n");
-m = ft_printf("ft: %x ", LONG_MIN);
-o = printf("OG: %lx ", LONG_MIN);
+m = ft_printf("ft: %x ", 0);
+o = printf("OG: %x ", 0);
 	printf("og: %d\n", m);
 	printf("ft: %d\n", o);
 
@@ -36,13 +36,13 @@ o = printf("OG: %lx ", LONG_MIN);
     rcount = printf(" NULL %s NULL \n", null);
     ft_printf("my   ft: %d\n", count);
     printf("real ft: %d\n\n", rcount);
-*/
+
     unsigned int num;
 
-    for(num = 1000; num != 1003 ; num++)
+    for(num = 1000; num != 1010 ; num++)
     {
-	    count = ft_printf("[%s]\n", num);
-    	rcount = printf("[%i]\n", num, num);
+	count = ft_printf("[%i] [%i] [%i]\n", num, num + 1, num + 2);
+    	rcount = printf("[%i] [%i] [%i]\n", num, num + 1, num + 2);
     	ft_printf("my   ft: %d\n", count);
     	printf("real ft: %d\n\n", rcount);
     }

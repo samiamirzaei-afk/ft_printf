@@ -27,4 +27,6 @@ re: fclean all
 bug: $(addprefix $(SRC_DIR), $(SRC))
 	cc src/.main_text.c $^ -g
 
+cbug: 
+	$(RM) a.out
 .PHONY: bug clean fclean re
