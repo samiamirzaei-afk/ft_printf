@@ -41,8 +41,8 @@ o = printf("OG: %lx ", LONG_MIN);
 
     for(num = 1000; num != 1003 ; num++)
     {
-	    count = ft_printf("[%i]\n", num);
-    	rcount = printf("[%i]\n", num);
+	    count = ft_printf("[%s]\n", num);
+    	rcount = printf("[%i]\n", num, num);
     	ft_printf("my   ft: %d\n", count);
     	printf("real ft: %d\n\n", rcount);
     }

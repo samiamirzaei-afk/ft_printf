@@ -16,7 +16,6 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(AR) $(ARFLAGS) $(NAME) $?
 
-
 clean:
 	$(RM) $(OBJ)
 
@@ -25,8 +24,7 @@ fclean: clean
 
 re: fclean all
 
-bug: $(SRC)
-	cc  main_text.c $^  -g
-
+bug: $(addprefix $(SRC_DIR), $(SRC))
+	cc src/.main_text.c $^ -g
 
 .PHONY: bug clean fclean re

@@ -48,7 +48,7 @@ static int	ft_show_nbr(int *count, int *i, char *itoa)
 	{
 		result = write(1, &itoa[(*i)--], 1);
 		if (result == -1)
-		return (-1);
+			return (-1);
 		*count += result;
 	}
 	return (*count);

@@ -94,27 +94,6 @@ int	ft_printf(const char *str, ...)
 
 	count = 0;	
 	va_start(ap, str);
-	while (*str)
-	{	
-		while(*str != '%' && *str)
-		{
-			count += ft_putchar(*str);
-			str++;
-		}
-	}
-	va_end(ap);
-	return(count);
-}
-*/
-
-/*
-int	ft_printf(const char *str, ...)
-{
-	va_list ap;
-	int count;
-
-	count = 0;	
-	va_start(ap, str);
 while (*str)
 {	
 	if(*str == '%' && *(str + 1) == 'u')
