@@ -12,11 +12,11 @@
 
 #include "ft_printf.h"
 
-void	format_finder2(const char **str, va_list ap, int *count, char *base)
+void	format_finder2(const char **str, va_list ap, int *count)
 {
 	if (**str == '%' && (*str)[1] == 'X')
 	{
-		*count += ft_putnbr_base(va_arg(ap, unsigned int), base);
+		*count += ft_putnbr_base(va_arg(ap, unsigned int), HEX_UP);
 		*str += 2;
 	}
 	if (**str == '%' && (*str)[1] == 'c')
@@ -36,7 +36,7 @@ void	format_finder2(const char **str, va_list ap, int *count, char *base)
 	}
 }
 
-void	format_finder(const char **str, va_list ap, int *count, char *base)
+void	format_finder(const char **str, va_list ap, int *count)
 {
 	if (**str == '%' && ((*str)[1] == 'd' || (*str)[1] == 'i'))
 	{
@@ -45,12 +45,12 @@ void	format_finder(const char **str, va_list ap, int *count, char *base)
 	}
 	if (**str == '%' && (*str)[1] == 'p')
 	{
-		*count += ft_putnbr_ptr(va_arg(ap, void *), base);
+		*count += ft_putnbr_ptr(va_arg(ap, void *), HEX_LO);
 		*str += 2;
 	}
 	if (**str == '%' && (*str)[1] == 'x')
 	{
-		*count += ft_putnbr_base(va_arg(ap, unsigned int), base);
+		*count += ft_putnbr_base(va_arg(ap, unsigned int), HEX_LO);
 		*str += 2;
 	}
 	if (**str == '%' && (*str)[1] == 'u')
@@ -58,7 +58,7 @@ void	format_finder(const char **str, va_list ap, int *count, char *base)
 		*count += ft_unsigned_putnbr(va_arg(ap, unsigned int));
 		*str += 2;
 	}
-	format_finder2(str, ap, count, "0123456789ABCDEF");
+	format_finder2(str, ap, count);
 }
 
 int	ft_printf(const char *str, ...)
@@ -74,7 +74,7 @@ int	ft_printf(const char *str, ...)
 	{
 		if (*str == '%')
 		{
-			format_finder(&str, ap, &count, "0123456789abcdef");
+			format_finder(&str, ap, &count);
 		}
 		while (*str != '%' && *str)
 		{

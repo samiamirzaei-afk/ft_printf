@@ -40,13 +40,13 @@ static int	ft_max_min_neg_check(int *nb, int *count)
 	return (1);
 }
 
-static int	ft_show_nbr(int *count, int *i, char *itoa)
+static int	ft_show_nbr(int *count, int *i, char *digit_buffer)
 {
 	int	result;
 
-	while (itoa[*i] != '\0')
+	while (digit_buffer[*i] != '\0')
 	{
-		result = write(1, &itoa[(*i)--], 1);
+		result = write(1, &digit_buffer[(*i)--], 1);
 		if (result == -1)
 			return (-1);
 		*count += result;
@@ -58,21 +58,21 @@ int	ft_putnbr(int nb)
 {
 	int		i;
 	int		count;
-	char	itoa[12];
+	char	digit_buffer[12];
 
 	count = 0;
 	if ((ft_max_min_neg_check(&nb, &count)) != 1)
 		return (count);
-	itoa[0] = '\0';
+	digit_buffer[0] = '\0';
 	i = 1;
 	while (nb > 9)
 	{
-		itoa[i] = (nb % 10) + '0';
+		digit_buffer[i] = (nb % 10) + '0';
 		nb /= 10;
 		i++;
 	}
-	itoa[i] = nb + '0';
-	if (ft_show_nbr(&count, &i, itoa) == -1)
+	digit_buffer[i] = nb + '0';
+	if (ft_show_nbr(&count, &i, digit_buffer) == -1)
 		return (-1);
 	return (count);
 }

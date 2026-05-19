@@ -55,7 +55,7 @@ Link `libftprintf.a` into your project:
 cc -Wall -Wextra -Werror your_program.c -L/path/to/libftprintf.a -lftprintf
 ```
 
-If `libftprintf.a` is in the same directory, then just use do this:
+If `libftprintf.a` is in the same directory, then add the libary directly:
 ```bash
 cc -Wall -Wextra -Werror your_program.c libftprintf.a
 ```

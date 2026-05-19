@@ -17,6 +17,10 @@
 # include <stdio.h>
 # include <unistd.h>
 
+/* Hexadecimal base constants */
+# define HEX_LO "0123456789abcdef"
+# define HEX_UP "0123456789ABCDEF"
+
 /*ft_nbr_strlen*/
 int		ft_putnbr(int nb);
 size_t	ft_strlen(const char *str);
