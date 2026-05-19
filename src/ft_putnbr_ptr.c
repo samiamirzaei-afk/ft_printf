@@ -14,19 +14,19 @@
 
 int	ft_convert_ptr(unsigned long nbr, int len, char *base, int count)
 {
-	int	temp[21];
+	short	digit_buffer[21];
 	int	i;
 
 	i = 1;
-	temp[0] = -1;
+	digit_buffer[0] = -1;
 	while (nbr >= (unsigned long)len)
 	{
-		temp[i] = nbr % len;
+		digit_buffer[i] = nbr % len;
 		nbr /= len;
 		i++;
 	}
-	temp[i] = nbr;
-	count = ft_show(temp, &i, base, count);
+	digit_buffer[i] = nbr;
+	count = ft_show(digit_buffer, &i, base, count);
 	return (count);
 }
 

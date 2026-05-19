@@ -12,52 +12,69 @@
 
 #include "ft_printf.h"
 
-int	ft_show(int *result, int *result_i, char *base, int count)
+int	ft_show(short *buffer, int *buffer_len, char *base, int count)
+{
+	int		write_check;
+
+	write_check = 0;
+	while (buffer[*buffer_len] != -1)
+	{
+		write_check = write(1, &base[buffer[*buffer_len]], 1);
+		if (write_check == -1)
+			return (-1);
+		count += write_check;
+		(*buffer_len) -= 1;
+	}
+	return (count);
+}
+
+/*
+int	ft_show(int *buffer, int *buffer_len, char *base, int count)
 {
 	char	temp;
 	int		write_check;
 
 	write_check = 0;
-	while (result[*result_i] != -1)
+	while (buffer[*buffer_len] != -1)
 	{
-		temp = base[result[*result_i]];
+		temp = base[buffer[*buffer_len]];
 		write_check = write(1, &temp, 1);
 		if (write_check == -1)
 			return (-1);
 		count += write_check;
-		*result_i = *result_i - 1;
+		*buffer_len = *buffer_len - 1;
 	}
 	return (count);
 }
+*/
 
-int	ft_convert(unsigned int nbr, int len, char *base, int count)
+
+int	ft_convert(unsigned int nbr, int base_len, char *base, int count)
 {
-	int	temp[21];
+	short	digit_buffer[21];
 	int	i;
 
 	i = 1;
-	temp[0] = -1;
-	while (nbr >= (unsigned int)len)
+	digit_buffer[0] = -1;
+	while (nbr >= (unsigned int)base_len)
 	{
-		temp[i] = nbr % len;
-		nbr /= len;
+		digit_buffer[i] = nbr % base_len;
+		nbr /= base_len;
 		i++;
 	}
-	temp[i] = nbr;
-	count = ft_show(temp, &i, base, count);
+	digit_buffer[i] = nbr;
+	count = ft_show(digit_buffer, &i, base, count);
 	return (count);
 }
 
-int	ft_putnbr_base(unsigned int ptr, char *base)
+int	ft_putnbr_base(unsigned int nbr, char *base)
 {
-	int				i;
-	unsigned int	nbr;
+	int				base_len;
 	int				count;
 
-	nbr = ptr;
 	count = 0;
-	i = 0;
-	while (base[i])
-		i++;
-	return (ft_convert(nbr, i, base, count));
+	base_len = 0;
+	while (base[base_len])
+		base_len++;
+	return (ft_convert(nbr, base_len, base, count));
 }

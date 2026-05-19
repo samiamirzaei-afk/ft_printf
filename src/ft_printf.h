@@ -33,7 +33,7 @@ int		ft_putstr(char *s);
 int		ft_putchar(char car);
 
 /*ft_putnbr_base*/
-int		ft_show(int *result, int *result_i, char *base, int count);
+int		ft_show(short *result, int *result_i, char *base, int count);
 int		ft_putnbr_base(unsigned int ptr, char *base);
 int		ft_convert(unsigned int nbr, int len, char *base, int count);
 

@@ -14,10 +14,10 @@ int    main(void)
     ft_printf("my   ft: %d\n", o);
     printf("real ft: %d\n", m);
 
-	m = printf(NULL);
-	o = ft_printf(NULL);
-	printf("og: %d\n", m);
-	printf("ft: %d\n", o);
+//	m = printf(NULL);
+//	o = ft_printf(NULL);
+//	printf("og: %d\n", m);
+//	printf("ft: %d\n", o);
     ft_printf("\n\n");
     
 m = ft_printf("ft: %x ", UINT_MAX);
@@ -95,13 +95,13 @@ o = printf("OG: %x ", 0);
     ft_printf("my   ft: %d\n", count);
     printf("real ft: %d\n\n", rcount);
 
-    count = ft_printf("[%x]\n", 2486);
-    rcount = printf("[%x]\n", 2486);
+    count = ft_printf("[%x]\n", 244586);
+    rcount = printf("[%x]\n", 244586);
     ft_printf("my   ft: %d\n", count);
     printf("real ft: %d\n\n", rcount);
 
-    count = ft_printf("[%X]\n", 2486);
-    rcount = printf("[%X]\n", 2486);
+    count = ft_printf("[%X]\n", 244586);
+    rcount = printf("[%X]\n", 244586);
     ft_printf("my   ft: %d\n", count);
     printf("real ft: %d\n\n", rcount);
 
