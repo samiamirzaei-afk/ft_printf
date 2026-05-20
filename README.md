@@ -45,6 +45,12 @@ make fclean
 
 # Rebuild from scratch
 make re
+
+# Build the tester file
+make bug
+
+# Remove the tester file
+make cbug
 ```
 
 ### Usage
