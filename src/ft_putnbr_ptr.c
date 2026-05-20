@@ -6,7 +6,7 @@
 /*   By: ammirzae <ammirzae@student.42vienna.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 09:30:34 by ammirzae          #+#    #+#             */
-/*   Updated: 2026/05/16 16:09:22 by ammirzae         ###   ########.fr       */
+/*   Updated: 2026/05/20 11:13:59 by ammirzae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_convert_ptr(unsigned long nbr, int len, char *base, int count)
 {
 	short	digit_buffer[21];
-	int	i;
+	int		i;
 
 	i = 1;
 	digit_buffer[0] = -1;

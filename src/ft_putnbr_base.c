@@ -6,7 +6,7 @@
 /*   By: ammirzae <ammirzae@student.42vienna.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 09:30:34 by ammirzae          #+#    #+#             */
-/*   Updated: 2026/05/16 16:09:15 by ammirzae         ###   ########.fr       */
+/*   Updated: 2026/05/20 11:13:30 by ammirzae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,31 +28,10 @@ int	ft_show(short *buffer, int *buffer_len, char *base, int count)
 	return (count);
 }
 
-/*
-int	ft_show(int *buffer, int *buffer_len, char *base, int count)
-{
-	char	temp;
-	int		write_check;
-
-	write_check = 0;
-	while (buffer[*buffer_len] != -1)
-	{
-		temp = base[buffer[*buffer_len]];
-		write_check = write(1, &temp, 1);
-		if (write_check == -1)
-			return (-1);
-		count += write_check;
-		*buffer_len = *buffer_len - 1;
-	}
-	return (count);
-}
-*/
-
-
 int	ft_convert(unsigned int nbr, int base_len, char *base, int count)
 {
 	short	digit_buffer[21];
-	int	i;
+	int		i;
 
 	i = 1;
 	digit_buffer[0] = -1;
@@ -78,3 +57,23 @@ int	ft_putnbr_base(unsigned int nbr, char *base)
 		base_len++;
 	return (ft_convert(nbr, base_len, base, count));
 }
+
+/*
+int	ft_show(int *buffer, int *buffer_len, char *base, int count)
+{
+	char	temp;
+	int		write_check;
+
+	write_check = 0;
+	while (buffer[*buffer_len] != -1)
+	{
+		temp = base[buffer[*buffer_len]];
+		write_check = write(1, &temp, 1);
+		if (write_check == -1)
+			return (-1);
+		count += write_check;
+		*buffer_len = *buffer_len - 1;
+	}
+	return (count);
+}
+*/
